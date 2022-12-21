@@ -104,7 +104,8 @@ export const formatDate = (
 export const replaceAll = (
   text: string,
   older: string[],
-  newer: string[]
+  newer: string[],
+  replaceSpecialChars?: boolean
 ): string => {
   if (!text || !older || !newer || older.length !== newer.length) {
     return text;
@@ -117,7 +118,27 @@ export const replaceAll = (
       control--;
     }
   }
-  return text;
+
+  const replaceChars = (): string => {
+    if (!replaceSpecialChars) {
+      return text;
+    }
+    return text
+      .replace(/á/g, "&aacute;")
+      .replace(/é/g, "&eacute;")
+      .replace(/í/g, "&iacute;")
+      .replace(/ó/g, "&oacute;")
+      .replace(/ú/g, "&uacute;")
+      .replace(/ñ/g, "&ntilde;")
+      .replace(/Á/g, "A")
+      .replace(/É/g, "E")
+      .replace(/Í/g, "I")
+      .replace(/Ó/g, "O")
+      .replace(/Ú/g, "U")
+      .replace(/Ñ/g, "&Ntilde;");
+  };
+
+  return replaceChars();
 };
 
 export const padLeadingZeros = (num?: string, size: number = 8): string => {

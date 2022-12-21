@@ -22,7 +22,7 @@ export declare class ArrayComplexList {
     countItems(id: string): number;
 }
 export declare const formatDate: (fecha?: Date, days?: number, utc?: boolean, separator?: "-" | "/") => string;
-export declare const replaceAll: (text: string, older: string[], newer: string[]) => string;
+export declare const replaceAll: (text: string, older: string[], newer: string[], replaceSpecialChars?: boolean) => string;
 export declare const padLeadingZeros: (num?: string, size?: number) => string;
 export declare const parseNumber: (value: any, def?: number) => number;
 export declare const emailIsValid: (value: string) => boolean;
